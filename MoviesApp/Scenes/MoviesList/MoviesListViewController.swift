@@ -85,5 +85,12 @@ extension MoviesListViewController: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIConstants.MOVIE_TABLEVIEW_CELL_HEIGHT
     }
+    
+    internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == MoviesListViewModel.SectionType.allMovies.rawValue, indexPath.row == viewModel.lastMovieIndex, viewModel.hasMorePages {
+            viewModel.requestMovies()
+            
+        }
+    }
 }
 

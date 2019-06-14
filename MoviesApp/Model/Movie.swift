@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 internal struct Movie {
+    internal var id: Int
     internal var title: String
     internal var overview: String
     internal var date: Date?
@@ -19,7 +20,8 @@ internal struct Movie {
         return poster != nil
     }
     
-    internal init(title: String, overview: String, dateRaw: String?, posterUrl: String?) {
+    internal init(id: Int, title: String, overview: String, dateRaw: String?, posterUrl: String?) {
+        self.id = id
         self.title = title
         self.overview = overview
         self.posterUrl = posterUrl

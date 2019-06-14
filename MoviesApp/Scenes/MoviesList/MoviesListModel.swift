@@ -11,11 +11,11 @@ import UIKit
 
 internal class MoviesListModel {
     
-    internal func getMovies(completionHandler: @escaping (Error?, [Movie]) -> Void) {
+    internal func getMovies(at page: Int, completionHandler: @escaping (Error?, [Movie]) -> Void) {
         var error: NSError?
         var movies = [Movie]()
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            APIClient.shared.getMovies() { response, data in
+            APIClient.shared.getMovies(at: page) { response, data in
                 guard let self = self else {
                     return
                 }
@@ -47,10 +47,11 @@ internal class MoviesListModel {
     }
     
     private func parseData(_ movieRawData: [String: Any]) -> Movie? {
-        guard let title = movieRawData["title"] as? String,
+        guard let id = movieRawData["id"] as? Int,
+            let title = movieRawData["title"] as? String,
             let overview = movieRawData["overview"] as? String else {
                 return nil
         }
-        return Movie(title: title, overview: overview, dateRaw: movieRawData["release_date"] as? String, posterUrl: movieRawData["poster_path"] as? String)
+        return Movie(id: id, title: title, overview: overview, dateRaw: movieRawData["release_date"] as? String, posterUrl: movieRawData["poster_path"] as? String)
     }
 }

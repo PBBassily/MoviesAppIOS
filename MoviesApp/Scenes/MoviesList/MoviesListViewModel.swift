@@ -12,14 +12,21 @@ internal class MoviesListViewModel {
     
     private var moviesDictionary: [SectionType: [Movie]]
     private var model: MoviesListModel
+    private var currentPage: Int
     private var hasPersonalMovies: Bool {
         return !(moviesDictionary[.myMovies]?.isEmpty ?? true)
     }
     internal var updateMoviesList: (() -> Void)?
+    internal var hasMorePages: Bool
+    internal var lastMovieIndex: Int {
+        return (moviesDictionary[.allMovies]?.count ?? 1) - 1
+    }
     
     internal init() {
         moviesDictionary = [SectionType: [Movie]]()
         model = MoviesListModel()
+        currentPage = 0
+        hasMorePages = true
         initMoviesDataSource()
     }
     
@@ -57,9 +64,17 @@ internal class MoviesListViewModel {
     }
     
     internal func requestMovies() {
-        model.getMovies { [weak self] error, movies in
-            self?.moviesDictionary[.allMovies] = movies
-            self?.updateMoviesList?()
+        currentPage += 1
+        model.getMovies(at: currentPage) { [weak self] error, movies in
+            if error == nil {
+                self?.moviesDictionary[.allMovies]?.append(contentsOf: movies)
+                self?.updateMoviesList?()
+            } else if let error = error as NSError?, error.code == 422 {
+                self?.hasMorePages = false
+            } else {
+                // TODO
+            }
+            
         }
     }
 }
