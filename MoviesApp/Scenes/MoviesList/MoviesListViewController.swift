@@ -8,13 +8,29 @@
 
 import UIKit
 
-class MoviesListViewController: UIViewController {
+internal class MoviesListViewController: UIViewController {
 
-    override func viewDidLoad() {
+    @IBOutlet private weak var moviesTableView: UITableView!
+    
+    override internal func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        configureTableView()
     }
+    
+    private func configureTableView() {
+        moviesTableView.dataSource = self
+    }
+}
 
-
+extension MoviesListViewController: UITableViewDataSource {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }
 

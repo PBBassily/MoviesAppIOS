@@ -19,6 +19,7 @@
 		384C47FC22B3E7630061B379 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47FB22B3E7630061B379 /* Movie.swift */; };
 		384C47FF22B3E87E0061B379 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47FE22B3E87E0061B379 /* MovieTableViewCell.swift */; };
 		384C480122B3E8980061B379 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 384C480022B3E8980061B379 /* MovieTableViewCell.xib */; };
+		384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480222B3F39D0061B379 /* MoviesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		384C47FB22B3E7630061B379 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		384C47FE22B3E87E0061B379 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		384C480022B3E8980061B379 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		384C480222B3F39D0061B379 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				384C47FD22B3E85C0061B379 /* MovieTableViewCell */,
 				384C47C022B3DE160061B379 /* MoviesListViewController.swift */,
 				384C47C222B3DE160061B379 /* MoviesList.storyboard */,
+				384C480222B3F39D0061B379 /* MoviesListViewModel.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				384C47FF22B3E87E0061B379 /* MovieTableViewCell.swift in Sources */,
 				384C47C122B3DE160061B379 /* MoviesListViewController.swift in Sources */,
 				384C47F922B3E3D90061B379 /* AppStoryboard.swift in Sources */,
+				384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */,
 				384C47FC22B3E7630061B379 /* Movie.swift in Sources */,
 				384C47BF22B3DE160061B379 /* AppDelegate.swift in Sources */,
 			);
