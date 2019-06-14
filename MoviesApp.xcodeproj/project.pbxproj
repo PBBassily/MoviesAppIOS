@@ -13,10 +13,10 @@
 		384C47C622B3DE180061B379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384C47C522B3DE180061B379 /* Assets.xcassets */; };
 		384C47D422B3DE180061B379 /* MoviesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47D322B3DE180061B379 /* MoviesAppTests.swift */; };
 		384C47DF22B3DE180061B379 /* MoviesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47DE22B3DE180061B379 /* MoviesAppUITests.swift */; };
-		384C47F422B3E2600061B379 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 384C47F322B3E2600061B379 /* Default-568h@2x.png */; };
 		384C47F522B3E2780061B379 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 384C47E022B3DE180061B379 /* Info.plist */; };
 		384C47F622B3E27B0061B379 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 384C47D522B3DE180061B379 /* Info.plist */; };
 		384C47F922B3E3D90061B379 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47F822B3E3D90061B379 /* AppStoryboard.swift */; };
+		384C47FC22B3E7630061B379 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C47FB22B3E7630061B379 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,8 @@
 		384C47DA22B3DE180061B379 /* MoviesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		384C47DE22B3DE180061B379 /* MoviesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITests.swift; sourceTree = "<group>"; };
 		384C47E022B3DE180061B379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		384C47F322B3E2600061B379 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		384C47F822B3E3D90061B379 /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		384C47FB22B3E7630061B379 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,6 @@
 		384C47B222B3DE160061B379 = {
 			isa = PBXGroup;
 			children = (
-				384C47F322B3E2600061B379 /* Default-568h@2x.png */,
 				384C47BD22B3DE160061B379 /* MoviesApp */,
 				384C47D222B3DE180061B379 /* MoviesAppTests */,
 				384C47DD22B3DE180061B379 /* MoviesAppUITests */,
@@ -102,9 +101,10 @@
 		384C47BD22B3DE160061B379 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
-				384C47EC22B3DF1E0061B379 /* Supporting Files */,
+				384C47FA22B3E7540061B379 /* Model */,
 				384C47ED22B3DF3D0061B379 /* Scenes */,
 				384C47F722B3E3C00061B379 /* Utilities */,
+				384C47EC22B3DF1E0061B379 /* Supporting Files */,
 			);
 			path = MoviesApp;
 			sourceTree = "<group>";
@@ -160,6 +160,14 @@
 				384C47F822B3E3D90061B379 /* AppStoryboard.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		384C47FA22B3E7540061B379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				384C47FB22B3E7630061B379 /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				384C47C622B3DE180061B379 /* Assets.xcassets in Resources */,
-				384C47F422B3E2600061B379 /* Default-568h@2x.png in Resources */,
 				384C47C422B3DE160061B379 /* MoviesList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +304,7 @@
 			files = (
 				384C47C122B3DE160061B379 /* MoviesListViewController.swift in Sources */,
 				384C47F922B3E3D90061B379 /* AppStoryboard.swift in Sources */,
+				384C47FC22B3E7630061B379 /* Movie.swift in Sources */,
 				384C47BF22B3DE160061B379 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
