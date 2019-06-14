@@ -11,12 +11,15 @@ import Foundation
 internal class MoviesListViewModel {
     
     private var moviesDictionary: [SectionType: [Movie]]
+    private var model: MoviesListModel
     private var hasPersonalMovies: Bool {
         return !(moviesDictionary[.myMovies]?.isEmpty ?? true)
     }
+    internal var updateMoviesList: (() -> Void)?
     
     internal init() {
         moviesDictionary = [SectionType: [Movie]]()
+        model = MoviesListModel()
         initMoviesDataSource()
     }
     
@@ -51,6 +54,13 @@ internal class MoviesListViewModel {
                 return nil
         }
         return moviesList[indexPath.row]
+    }
+    
+    internal func requestMovies() {
+        model.getMovies { [weak self] error, movies in
+            self?.moviesDictionary[.allMovies] = movies
+            self?.updateMoviesList?()
+        }
     }
 }
 

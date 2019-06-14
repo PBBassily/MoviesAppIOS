@@ -15,4 +15,7 @@ internal struct Movie {
     internal var date: Date
     internal var posterUrl: String?
     internal var poster: UIImage?
+    internal var hasPoster: Bool {
+        return poster != nil
+    }
 }

@@ -15,6 +15,9 @@ internal class MovieTableViewCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var overviewTextField: UITextView!
     @IBOutlet private weak var posterLoadingIndicator: UIActivityIndicatorView!
+    internal static var resubaleIdentifier: String {
+        return "\(self)"
+    }
     
 
     override internal func awakeFromNib() {

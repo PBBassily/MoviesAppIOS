@@ -9,7 +9,7 @@
 import UIKit
 
 internal class MoviesListViewController: UIViewController {
-
+    
     @IBOutlet private weak var moviesTableView: UITableView!
     private var viewModel: MoviesListViewModel!
     
@@ -17,6 +17,13 @@ internal class MoviesListViewController: UIViewController {
         super.viewDidLoad()
         initViewModel()
         configureTableView()
+        handleUpadateMoviesAction()
+        registerMovieTableViewCell()
+    }
+    
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.requestMovies()
     }
     
     private func initViewModel() {
@@ -25,6 +32,19 @@ internal class MoviesListViewController: UIViewController {
     
     private func configureTableView() {
         moviesTableView.dataSource = self
+    }
+    
+    private func handleUpadateMoviesAction() {
+        viewModel.updateMoviesList = {
+            DispatchQueue.main.async { [weak self] in
+                self?.moviesTableView.reloadData()
+            }
+        }
+    }
+    
+    private func registerMovieTableViewCell() {
+        let nib = UINib(nibName: AppNibFiles.MovieTableViewCell.rawValue, bundle: nil)
+        moviesTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.resubaleIdentifier)
     }
 }
 
@@ -49,9 +69,14 @@ extension MoviesListViewController: UITableViewDataSource {
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.resubaleIdentifier) as? MovieTableViewCell, let movie = viewModel.getMovie(at: indexPath) {
+            cell.configure(with: movie)
+            if movie.hasPoster {
+                cell.setMoviePoster(movie.poster ?? UIImage())
+            }
+            return cell
+        }
         return UITableViewCell()
     }
-    
-    
 }
 
