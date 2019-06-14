@@ -41,9 +41,14 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-Ut-mnT">
+                    <rect key="frame" x="89.5" y="128" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="aWk-Ut-mnT" firstAttribute="centerX" secondItem="gNs-KQ-kuF" secondAttribute="centerX" id="2On-1y-g1Z"/>
+                <constraint firstItem="aWk-Ut-mnT" firstAttribute="centerY" secondItem="gNs-KQ-kuF" secondAttribute="centerY" id="3cK-XO-E4c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0Lb-e6-9cU" secondAttribute="bottom" constant="10" id="3gy-Zy-tHQ"/>
                 <constraint firstItem="NK5-Mj-SCv" firstAttribute="top" secondItem="gNs-KQ-kuF" secondAttribute="top" id="7zP-X7-EaQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gNs-KQ-kuF" secondAttribute="bottom" constant="20" id="F0n-SN-xDl"/>
@@ -59,6 +64,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dateLabel" destination="uQJ-B1-CFM" id="ZfX-Nx-XGk"/>
+                <outlet property="overviewTextField" destination="0Lb-e6-9cU" id="Z9r-hP-gdf"/>
+                <outlet property="posterLoadingIndicator" destination="aWk-Ut-mnT" id="NKy-s6-ecu"/>
+                <outlet property="posterView" destination="gNs-KQ-kuF" id="K60-g5-qOt"/>
+                <outlet property="titleLabel" destination="NK5-Mj-SCv" id="thK-BU-Hda"/>
+            </connections>
             <point key="canvasLocation" x="284.80000000000001" y="-21.589205397301352"/>
         </view>
     </objects>

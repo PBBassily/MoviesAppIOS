@@ -8,17 +8,42 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
+internal class MovieTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var posterView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var overviewTextField: UITextView!
+    @IBOutlet private weak var posterLoadingIndicator: UIActivityIndicatorView!
+    
 
-    override func awakeFromNib() {
+    override internal func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configurePosterView()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func configurePosterView() {
+        posterView.layer.cornerRadius = 5
+        posterView.contentMode = .scaleAspectFill
+        posterView.clipsToBounds = true
+    }
+    
+    private func configureDateLabel(with date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        dateLabel.text = formatter.string(from: date)
+    }
+    
+    internal func configure(with movie: Movie) {
+        configureDateLabel(with: movie.date)
+        titleLabel.text = movie.title
+        overviewTextField.text = movie.overview
+        posterLoadingIndicator.startAnimating()
+    }
+    
+    internal func setMoviePoster(_ image: UIImage) {
+        posterLoadingIndicator.stopAnimating()
+        posterView.image = image
     }
 
 }
