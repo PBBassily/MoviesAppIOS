@@ -11,10 +11,16 @@ import UIKit
 internal class MoviesListViewController: UIViewController {
 
     @IBOutlet private weak var moviesTableView: UITableView!
+    private var viewModel: MoviesListViewModel!
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
+        initViewModel()
         configureTableView()
+    }
+    
+    private func initViewModel() {
+        viewModel = MoviesListViewModel()
     }
     
     private func configureTableView() {
@@ -23,8 +29,23 @@ internal class MoviesListViewController: UIViewController {
 }
 
 extension MoviesListViewController: UITableViewDataSource {
+    
+    internal func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.getNumberOfSections()
+    }
+    
+    internal func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionType = MoviesListViewModel.SectionType(rawValue: section) else {
+            return ""
+        }
+        return viewModel.getSectionTitle(at: sectionType)
+    }
+    
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let sectionType = MoviesListViewModel.SectionType(rawValue: section) else {
+            return 0
+        }
+        return viewModel.getNumberOfMovies(at: sectionType)
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
