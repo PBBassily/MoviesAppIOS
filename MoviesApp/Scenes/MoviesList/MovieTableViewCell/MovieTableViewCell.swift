@@ -31,10 +31,15 @@ internal class MovieTableViewCell: UITableViewCell {
         posterView.clipsToBounds = true
     }
     
-    private func configureDateLabel(with date: Date) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        dateLabel.text = formatter.string(from: date)
+    private func configureDateLabel(with date: Date?) {
+        if let date = date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            dateLabel.text = formatter.string(from: date)
+        } else {
+            dateLabel.text = "Unknown"
+        }
+        
     }
     
     internal func configure(with movie: Movie) {
@@ -60,5 +65,5 @@ internal class MovieTableViewCell: UITableViewCell {
         overviewTextField.text = ""
         dateLabel.text = ""
     }
-
+    
 }

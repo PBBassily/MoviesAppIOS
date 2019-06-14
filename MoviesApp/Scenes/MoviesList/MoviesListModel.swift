@@ -14,15 +14,43 @@ internal class MoviesListModel {
     internal func getMovies(completionHandler: @escaping (Error?, [Movie]) -> Void) {
         var error: NSError?
         var movies = [Movie]()
-        DispatchQueue.global(qos: .utility).async {
-            APIClient.shared.getMovies() { error, data in
-                
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            APIClient.shared.getMovies() { response, data in
+                guard let self = self else {
+                    return
+                }
+                if let statusCode = response?.statusCode, let data = data {
+                    switch statusCode {
+                    case 200:
+                        do {
+                            let repsonseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                            if let moviesRawData  = repsonseDictionary?["results"] as? [[String: Any]] {
+                                for movieRawData in moviesRawData {
+                                    if let movie = self.parseData(movieRawData) {
+                                        movies.append(movie)
+                                    }
+                                }
+                            }
+                        } catch {
+                            completionHandler(NSError(domain: "", code: 0, userInfo: ["message": "can not parse data"]), movies)
+                            return
+                        }
+                    default:
+                        error = NSError(domain: "", code: statusCode, userInfo: ["message": "bad response"])
+                    }
+                } else {
+                    error = NSError(domain: "", code: 0, userInfo: ["message": "no response"])
+                }
+                completionHandler(error, movies)
             }
-            for i in 1 ... 100 {
-                let movie = Movie(title: "Movie #\(i)", overview: String(repeating: "overview ", count: i), date: Date(), posterUrl: nil, poster: UIImage(named: "poster_placeholder"))
-                movies.append(movie)
-            }
-            completionHandler(error, movies)
         }
+    }
+    
+    private func parseData(_ movieRawData: [String: Any]) -> Movie? {
+        guard let title = movieRawData["title"] as? String,
+            let overview = movieRawData["overview"] as? String else {
+                return nil
+        }
+        return Movie(title: title, overview: overview, dateRaw: movieRawData["release_date"] as? String, posterUrl: movieRawData["poster_path"] as? String)
     }
 }
