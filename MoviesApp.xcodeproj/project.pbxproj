@@ -22,6 +22,7 @@
 		384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480222B3F39D0061B379 /* MoviesListViewModel.swift */; };
 		384C480522B3FCCD0061B379 /* MoviesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480422B3FCCD0061B379 /* MoviesListModel.swift */; };
 		384C480722B4032F0061B379 /* AppNibFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480622B4032F0061B379 /* AppNibFiles.swift */; };
+		384C480922B407410061B379 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480822B407410061B379 /* UIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		384C480222B3F39D0061B379 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		384C480422B3FCCD0061B379 /* MoviesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListModel.swift; sourceTree = "<group>"; };
 		384C480622B4032F0061B379 /* AppNibFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNibFiles.swift; sourceTree = "<group>"; };
+		384C480822B407410061B379 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				384C47F822B3E3D90061B379 /* AppStoryboard.swift */,
 				384C480622B4032F0061B379 /* AppNibFiles.swift */,
+				384C480822B407410061B379 /* UIConstants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				384C47FF22B3E87E0061B379 /* MovieTableViewCell.swift in Sources */,
 				384C480722B4032F0061B379 /* AppNibFiles.swift in Sources */,
+				384C480922B407410061B379 /* UIConstants.swift in Sources */,
 				384C47C122B3DE160061B379 /* MoviesListViewController.swift in Sources */,
 				384C47F922B3E3D90061B379 /* AppStoryboard.swift in Sources */,
 				384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */,

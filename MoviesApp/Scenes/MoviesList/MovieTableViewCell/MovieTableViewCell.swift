@@ -19,14 +19,14 @@ internal class MovieTableViewCell: UITableViewCell {
         return "\(self)"
     }
     
-
     override internal func awakeFromNib() {
         super.awakeFromNib()
         configurePosterView()
+        overviewTextField.isEditable = false
     }
     
     private func configurePosterView() {
-        posterView.layer.cornerRadius = 5
+        posterView.layer.cornerRadius = UIConstants.CornerRadius.small.rawValue
         posterView.contentMode = .scaleAspectFill
         posterView.clipsToBounds = true
     }
@@ -47,6 +47,18 @@ internal class MovieTableViewCell: UITableViewCell {
     internal func setMoviePoster(_ image: UIImage) {
         posterLoadingIndicator.stopAnimating()
         posterView.image = image
+    }
+    
+    override internal func prepareForReuse() {
+        clearView()
+    }
+    
+    private func clearView() {
+        posterView.image = nil
+        posterLoadingIndicator.stopAnimating()
+        titleLabel.text = ""
+        overviewTextField.text = ""
+        dateLabel.text = ""
     }
 
 }

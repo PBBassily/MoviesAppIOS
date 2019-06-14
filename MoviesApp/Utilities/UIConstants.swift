@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+internal class UIConstants {
+    internal enum CornerRadius: CGFloat {
+        case small = 5
+    }
+    internal static var MOVIE_TABLEVIEW_CELL_HEIGHT: CGFloat = 200
+}

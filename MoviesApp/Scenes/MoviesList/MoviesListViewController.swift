@@ -32,6 +32,7 @@ internal class MoviesListViewController: UIViewController {
     
     private func configureTableView() {
         moviesTableView.dataSource = self
+        moviesTableView.delegate = self
     }
     
     private func handleUpadateMoviesAction() {
@@ -77,6 +78,12 @@ extension MoviesListViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension MoviesListViewController: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIConstants.MOVIE_TABLEVIEW_CELL_HEIGHT
     }
 }
 
