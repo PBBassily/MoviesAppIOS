@@ -15,6 +15,9 @@ internal class MoviesListModel {
         var error: NSError?
         var movies = [Movie]()
         DispatchQueue.global(qos: .utility).async {
+            APIClient.shared.getMovies() { error, data in
+                
+            }
             for i in 1 ... 100 {
                 let movie = Movie(title: "Movie #\(i)", overview: String(repeating: "overview ", count: i), date: Date(), posterUrl: nil, poster: UIImage(named: "poster_placeholder"))
                 movies.append(movie)
