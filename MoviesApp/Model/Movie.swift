@@ -23,6 +23,10 @@ internal struct Movie {
         self.title = title
         self.overview = overview
         self.posterUrl = posterUrl
-        self.date = DateFormatter().date(from: dateRaw ?? "")
+        if let dateRaw = dateRaw {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            self.date = formatter.date(from: dateRaw)
+        }
     }
 }
