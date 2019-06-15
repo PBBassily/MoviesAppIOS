@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OdN-uu-1S3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7yp-9w-KyB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OdN-uu-1S3" secondAttribute="bottom" id="aDB-Al-laF"/>
+                            <constraint firstAttribute="bottom" secondItem="OdN-uu-1S3" secondAttribute="bottom" id="aDB-Al-laF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OdN-uu-1S3" secondAttribute="trailing" id="xOW-cN-uGt"/>
                             <constraint firstItem="OdN-uu-1S3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xQE-be-2o9"/>
                         </constraints>

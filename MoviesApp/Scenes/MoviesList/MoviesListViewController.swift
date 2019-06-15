@@ -18,7 +18,7 @@ internal class MoviesListViewController: UIViewController {
         initViewModel()
         configureTableView()
         handleUpadateMoviesAction()
-        registerMovieTableViewCell()
+        registerNibFilesToTableView()
     }
     
     override internal func viewWillAppear(_ animated: Bool) {
@@ -38,14 +38,19 @@ internal class MoviesListViewController: UIViewController {
     private func handleUpadateMoviesAction() {
         viewModel.updateMoviesList = {
             DispatchQueue.main.async { [weak self] in
+                if let loadingFooter = self?.moviesTableView.footerView(forSection: MoviesListViewModel.SectionType.allMovies.rawValue) as? LoadingFooterView {
+                    loadingFooter.stopLoading()
+                }
                 self?.moviesTableView.reloadData()
             }
         }
     }
     
-    private func registerMovieTableViewCell() {
-        let nib = UINib(nibName: AppNibFiles.MovieTableViewCell.rawValue, bundle: nil)
-        moviesTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.resubaleIdentifier)
+    private func registerNibFilesToTableView() {
+        let moviesCellNib = UINib(nibName: AppNibFiles.MovieTableViewCell.rawValue, bundle: nil)
+        moviesTableView.register(moviesCellNib, forCellReuseIdentifier: MovieTableViewCell.resubaleIdentifier)
+        let footerNib = UINib(nibName: AppNibFiles.LoadingFooterView.rawValue, bundle: nil)
+        moviesTableView.register(footerNib, forHeaderFooterViewReuseIdentifier: LoadingFooterView.resubaleIdentifier)
     }
 }
 
@@ -89,8 +94,19 @@ extension MoviesListViewController: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == MoviesListViewModel.SectionType.allMovies.rawValue, indexPath.row == viewModel.lastMovieIndex, viewModel.hasMorePages {
             viewModel.requestMovies()
+            if let loadingFooter = tableView.footerView(forSection: indexPath.section) as? LoadingFooterView {
+                loadingFooter.startLoading()
+            }
             
         }
+    }
+    
+    internal func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let section = MoviesListViewModel.SectionType(rawValue: section), section == .allMovies {
+            let footerView: LoadingFooterView? = tableView.dequeueReusableHeaderFooterView(withIdentifier: LoadingFooterView.resubaleIdentifier) as? LoadingFooterView
+            return footerView
+        }
+        return nil
     }
 }
 

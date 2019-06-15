@@ -24,6 +24,8 @@
 		384C480722B4032F0061B379 /* AppNibFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480622B4032F0061B379 /* AppNibFiles.swift */; };
 		384C480922B407410061B379 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480822B407410061B379 /* UIConstants.swift */; };
 		384C480C22B4096E0061B379 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480B22B4096E0061B379 /* APIClient.swift */; };
+		385C711A22B5004900469081 /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385C711922B5004900469081 /* LoadingFooterView.xib */; };
+		385C711C22B5012B00469081 /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C711B22B5012B00469081 /* LoadingFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		384C480622B4032F0061B379 /* AppNibFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNibFiles.swift; sourceTree = "<group>"; };
 		384C480822B407410061B379 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		384C480B22B4096E0061B379 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		385C711922B5004900469081 /* LoadingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingFooterView.xib; sourceTree = "<group>"; };
+		385C711B22B5012B00469081 /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 		384C47EE22B3DF5C0061B379 /* MoviesList */ = {
 			isa = PBXGroup;
 			children = (
+				385C711822B5002300469081 /* LoadingFooterView */,
 				384C47FD22B3E85C0061B379 /* MovieTableViewCell */,
 				384C47C022B3DE160061B379 /* MoviesListViewController.swift */,
 				384C47C222B3DE160061B379 /* MoviesList.storyboard */,
@@ -205,6 +210,15 @@
 				384C480B22B4096E0061B379 /* APIClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		385C711822B5002300469081 /* LoadingFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				385C711922B5004900469081 /* LoadingFooterView.xib */,
+				385C711B22B5012B00469081 /* LoadingFooterView.swift */,
+			);
+			path = LoadingFooterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +328,7 @@
 				384C47C622B3DE180061B379 /* Assets.xcassets in Resources */,
 				384C47C422B3DE160061B379 /* MoviesList.storyboard in Resources */,
 				384C480122B3E8980061B379 /* MovieTableViewCell.xib in Resources */,
+				385C711A22B5004900469081 /* LoadingFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +359,7 @@
 				384C480722B4032F0061B379 /* AppNibFiles.swift in Sources */,
 				384C480922B407410061B379 /* UIConstants.swift in Sources */,
 				384C480C22B4096E0061B379 /* APIClient.swift in Sources */,
+				385C711C22B5012B00469081 /* LoadingFooterView.swift in Sources */,
 				384C47C122B3DE160061B379 /* MoviesListViewController.swift in Sources */,
 				384C47F922B3E3D90061B379 /* AppStoryboard.swift in Sources */,
 				384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */,

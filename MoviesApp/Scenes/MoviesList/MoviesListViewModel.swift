@@ -68,13 +68,12 @@ internal class MoviesListViewModel {
         model.getMovies(at: currentPage) { [weak self] error, movies in
             if error == nil {
                 self?.moviesDictionary[.allMovies]?.append(contentsOf: movies)
-                self?.updateMoviesList?()
             } else if let error = error as NSError?, error.code == 422 {
                 self?.hasMorePages = false
             } else {
                 // TODO
             }
-            
+            self?.updateMoviesList?()
         }
     }
 }
