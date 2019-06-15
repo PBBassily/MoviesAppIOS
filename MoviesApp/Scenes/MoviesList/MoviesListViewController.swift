@@ -52,6 +52,14 @@ internal class MoviesListViewController: UIViewController {
         let footerNib = UINib(nibName: AppNibFiles.LoadingFooterView.rawValue, bundle: nil)
         moviesTableView.register(footerNib, forHeaderFooterViewReuseIdentifier: LoadingFooterView.resubaleIdentifier)
     }
+    
+    private func navigateToMovieDetails(with movie: Movie) {
+        if let viewController = AppStoryboard.MovieCreationAndDetails.initialViewController() as? MovieCreationAndDetailsViewController {
+            viewController.usageType = .showingMovieDetails
+            viewController.selectedMovie = movie
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 extension MoviesListViewController: UITableViewDataSource {
@@ -113,6 +121,13 @@ extension MoviesListViewController: UITableViewDelegate {
             return footerView
         }
         return nil
+    }
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let movie = viewModel.getMovie(at: indexPath) {
+            navigateToMovieDetails(with: movie)
+        }
     }
 }
 

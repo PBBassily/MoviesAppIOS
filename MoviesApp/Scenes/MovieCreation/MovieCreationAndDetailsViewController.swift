@@ -11,8 +11,9 @@ import UIKit
 internal class MovieCreationAndDetailsViewController: UIViewController {
     
     internal var usageType: UsageType = .movieCreation
+    internal var selectedMovie: Movie?
     private var viewModel: MovieCreationViewModel!
-     private var imagePicker: UIImagePickerController!
+    private var imagePicker: UIImagePickerController!
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         if usageType == .movieCreation {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        } else if usageType == .showingMovieDetails, let movie = selectedMovie {
+            configureView(with: movie)
         }
         title = usageType.rawValue
     }
@@ -32,6 +35,12 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
     private func configureView() {
         if let view = view as? MovieCreationAndDetailsView, usageType == .movieCreation {
             view.delegate = self
+        }
+    }
+    
+    private func configureView(with movie: Movie) {
+        if let view = view as? MovieCreationAndDetailsView {
+            view.configureMovie(movie)
         }
     }
     
@@ -65,7 +74,7 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
 }
 
 extension MovieCreationAndDetailsViewController {
-   
+    
     internal enum UsageType: String {
         case showingMovieDetails = "Movie details"
         case movieCreation = "Create your movie"

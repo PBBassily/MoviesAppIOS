@@ -12,6 +12,7 @@ import UIKit
 public enum AppStoryboard: String {
     
     case MoviesList
+    case MovieCreationAndDetails
     
     public var instance: UIStoryboard {
         return UIStoryboard(name: rawValue, bundle: Bundle.main)

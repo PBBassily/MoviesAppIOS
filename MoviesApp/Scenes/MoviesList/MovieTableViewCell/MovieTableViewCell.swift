@@ -47,7 +47,7 @@ internal class MovieTableViewCell: UITableViewCell {
         configureDateLabel(with: movie.date)
         titleLabel.text = movie.title
         overviewTextField.text = movie.overview
-        overviewTextField.contentInset = UIEdgeInsets.zero
+        overviewTextField.scrollsToTop = true
         posterLoadingIndicator.startAnimating()
         movieId = movie.id
     }

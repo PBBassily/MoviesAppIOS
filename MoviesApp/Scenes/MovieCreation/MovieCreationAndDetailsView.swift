@@ -17,6 +17,7 @@ internal protocol MovieCreationViewDelegate: class {
 
 class MovieCreationAndDetailsView: UIView {
     
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var posterView: UIImageView!
     @IBOutlet private weak var titleField: UITextField!
     @IBOutlet private weak var dateField: UITextField!
@@ -51,6 +52,7 @@ class MovieCreationAndDetailsView: UIView {
     private func configureTitleField() {
         titleField.placeholder = "Movie title"
         titleField.delegate = self
+        titleLabel.isHidden = true
     }
     
     private func configurePosterView() {
@@ -66,14 +68,27 @@ class MovieCreationAndDetailsView: UIView {
     }
     
     private func setTitle(_ movieTitle: String) {
-        titleField.text = movieTitle
-        titleField.isEnabled = false
+        titleLabel.text = movieTitle
+        titleLabel.isHidden = false
+        titleField.isHidden = true
     }
     
     private func setOverview(_ movieOverview: String) {
         overviewTextField.text = movieOverview
         overviewTextField.contentInset = .zero
         overviewTextField.isEditable = false
+        overviewTextField.textColor = .black
+    }
+    
+    private func setMovieDate(_ date: Date?) {
+        if let date = date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            dateField.text = formatter.string(from: date)
+        } else {
+            dateField.text = "Unknown"
+        }
+        dateField.isEnabled = false
     }
     
     internal func setMoviePoster(_ image: UIImage?) {
@@ -85,6 +100,7 @@ class MovieCreationAndDetailsView: UIView {
     internal func configureMovie(_ movie: Movie) {
         setTitle(movie.title)
         setOverview(movie.overview)
+        setMovieDate(movie.date)
         setMoviePoster(movie.poster)
     }
     
