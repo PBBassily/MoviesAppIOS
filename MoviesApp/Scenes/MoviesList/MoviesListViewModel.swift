@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 internal class MoviesListViewModel {
     
@@ -74,6 +75,19 @@ internal class MoviesListViewModel {
                 // TODO
             }
             self?.updateMoviesList?()
+        }
+    }
+    
+    internal func downloadPosterForMovie(at indexPath: IndexPath, width: Int, completionHandler: @escaping (UIImage?, Int?) -> Void) {
+        guard let sectionType = SectionType(rawValue: indexPath.section),
+            let moviesList = moviesDictionary[sectionType],
+            indexPath.row < moviesList.count else {
+                completionHandler(nil, nil)
+                return
+        }
+        model.downloadImage(for: moviesList[indexPath.row], width: width) { [weak self]image in
+            self?.moviesDictionary[sectionType]?[indexPath.row].poster = image
+            completionHandler(image, moviesList[indexPath.row].id)
         }
     }
 }

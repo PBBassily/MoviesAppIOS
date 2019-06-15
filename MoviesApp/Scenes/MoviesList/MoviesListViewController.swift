@@ -78,7 +78,13 @@ extension MoviesListViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.resubaleIdentifier) as? MovieTableViewCell, let movie = viewModel.getMovie(at: indexPath) {
             cell.configure(with: movie)
             if movie.hasPoster {
-                cell.setMoviePoster(movie.poster ?? UIImage())
+                cell.setMoviePoster(movie.poster, of: movie.id)
+            } else {
+                viewModel.downloadPosterForMovie(at: indexPath, width: 200) { (image, movieId) in
+                    DispatchQueue.main.async {
+                        cell.setMoviePoster(image, of: movieId)
+                    }
+                }
             }
             return cell
         }

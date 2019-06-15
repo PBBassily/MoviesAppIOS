@@ -15,6 +15,7 @@ internal class MovieTableViewCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var overviewTextField: UITextView!
     @IBOutlet private weak var posterLoadingIndicator: UIActivityIndicatorView!
+    private var movieId: Int?
     internal static var resubaleIdentifier: String {
         return "\(self)"
     }
@@ -47,11 +48,15 @@ internal class MovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         overviewTextField.text = movie.overview
         posterLoadingIndicator.startAnimating()
+        movieId = movie.id
     }
     
-    internal func setMoviePoster(_ image: UIImage) {
-        posterLoadingIndicator.stopAnimating()
-        posterView.image = image
+    internal func setMoviePoster(_ image: UIImage?, of id: Int?) {
+        if movieId == id {
+            posterLoadingIndicator.stopAnimating()
+            posterView.image = image
+        }
+        
     }
     
     override internal func prepareForReuse() {

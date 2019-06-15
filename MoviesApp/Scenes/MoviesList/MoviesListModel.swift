@@ -54,4 +54,20 @@ internal class MoviesListModel {
         }
         return Movie(id: id, title: title, overview: overview, dateRaw: movieRawData["release_date"] as? String, posterUrl: movieRawData["poster_path"] as? String)
     }
+    
+    internal func downloadImage(for movie: Movie, width: Int, completionHandler: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global(qos: .utility).async {
+            guard let posterUrl = movie.posterUrl else {
+                completionHandler(UIImage(named: "poster_placeholder"))
+                return
+            }
+            APIClient.shared.dowloadFromServer(posterPath: posterUrl, width: width) { data in
+                if let data = data, let image = UIImage(data: data) {
+                    completionHandler(image)
+                } else {
+                    completionHandler(UIImage(named: "poster_placeholder"))
+                }
+            }
+        }
+    }
 }
