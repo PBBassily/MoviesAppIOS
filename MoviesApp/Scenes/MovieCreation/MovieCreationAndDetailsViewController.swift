@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class MovieCreationAndDetails: UIViewController {
+internal class MovieCreationAndDetailsViewController: UIViewController {
     internal var usageType: UsageType = .movieCreation
     
     override internal func viewDidLoad() {
@@ -29,7 +29,7 @@ internal class MovieCreationAndDetails: UIViewController {
     
 }
 
-extension MovieCreationAndDetails {
+extension MovieCreationAndDetailsViewController {
     internal enum UsageType: String {
         case showingMovieDetails = "Movie details"
         case movieCreation = "Create your movie"
