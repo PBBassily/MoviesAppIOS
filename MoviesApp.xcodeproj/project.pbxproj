@@ -167,6 +167,7 @@
 		384C47ED22B3DF3D0061B379 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				385C712822B54B7D00469081 /* ResuableViews */,
 				385C711D22B5153700469081 /* MovieCreation */,
 				384C47EE22B3DF5C0061B379 /* MoviesList */,
 			);
@@ -176,8 +177,6 @@
 		384C47EE22B3DF5C0061B379 /* MoviesList */ = {
 			isa = PBXGroup;
 			children = (
-				385C711822B5002300469081 /* LoadingFooterView */,
-				384C47FD22B3E85C0061B379 /* MovieTableViewCell */,
 				384C47C022B3DE160061B379 /* MoviesListViewController.swift */,
 				384C47C222B3DE160061B379 /* MoviesList.storyboard */,
 				384C480222B3F39D0061B379 /* MoviesListViewModel.swift */,
@@ -239,6 +238,15 @@
 				385C712622B52BFB00469081 /* MovieCreationViewModel.swift */,
 			);
 			path = MovieCreation;
+			sourceTree = "<group>";
+		};
+		385C712822B54B7D00469081 /* ResuableViews */ = {
+			isa = PBXGroup;
+			children = (
+				385C711822B5002300469081 /* LoadingFooterView */,
+				384C47FD22B3E85C0061B379 /* MovieTableViewCell */,
+			);
+			path = ResuableViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
