@@ -51,6 +51,7 @@ class MovieCreationAndDetailsView: UIView {
     
     private func configureTitleField() {
         titleField.placeholder = "Movie title"
+        titleField.autocapitalizationType = .sentences
         titleField.delegate = self
         titleLabel.isHidden = true
     }

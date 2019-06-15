@@ -15,6 +15,7 @@ internal class MoviesListViewController: UIViewController {
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
+        title = "Movies List"
         initViewModel()
         configureTableView()
         handleUpadateMoviesAction()
