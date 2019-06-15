@@ -10,4 +10,5 @@ import Foundation
 
 internal enum AppNibFiles: String {
     case MovieTableViewCell
+    case LoadingFooterView
 }

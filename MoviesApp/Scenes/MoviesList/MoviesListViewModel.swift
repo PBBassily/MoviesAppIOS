@@ -7,19 +7,27 @@
 //
 
 import Foundation
+import UIKit
 
 internal class MoviesListViewModel {
     
     private var moviesDictionary: [SectionType: [Movie]]
     private var model: MoviesListModel
+    private var currentPage: Int
     private var hasPersonalMovies: Bool {
         return !(moviesDictionary[.myMovies]?.isEmpty ?? true)
     }
     internal var updateMoviesList: (() -> Void)?
+    internal var hasMorePages: Bool
+    internal var lastMovieIndex: Int {
+        return (moviesDictionary[.allMovies]?.count ?? 1) - 1
+    }
     
     internal init() {
         moviesDictionary = [SectionType: [Movie]]()
         model = MoviesListModel()
+        currentPage = 0
+        hasMorePages = true
         initMoviesDataSource()
     }
     
@@ -57,9 +65,29 @@ internal class MoviesListViewModel {
     }
     
     internal func requestMovies() {
-        model.getMovies { [weak self] error, movies in
-            self?.moviesDictionary[.allMovies] = movies
+        currentPage += 1
+        model.getMovies(at: currentPage) { [weak self] error, movies in
+            if error == nil {
+                self?.moviesDictionary[.allMovies]?.append(contentsOf: movies)
+            } else if let error = error as NSError?, error.code == 422 {
+                self?.hasMorePages = false
+            } else {
+                // TODO
+            }
             self?.updateMoviesList?()
+        }
+    }
+    
+    internal func downloadPosterForMovie(at indexPath: IndexPath, width: Int, completionHandler: @escaping (UIImage?, Int?) -> Void) {
+        guard let sectionType = SectionType(rawValue: indexPath.section),
+            let moviesList = moviesDictionary[sectionType],
+            indexPath.row < moviesList.count else {
+                completionHandler(nil, nil)
+                return
+        }
+        model.downloadImage(for: moviesList[indexPath.row], width: width) { [weak self]image in
+            self?.moviesDictionary[sectionType]?[indexPath.row].poster = image
+            completionHandler(image, moviesList[indexPath.row].id)
         }
     }
 }

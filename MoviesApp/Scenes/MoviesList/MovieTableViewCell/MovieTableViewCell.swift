@@ -15,6 +15,7 @@ internal class MovieTableViewCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var overviewTextField: UITextView!
     @IBOutlet private weak var posterLoadingIndicator: UIActivityIndicatorView!
+    private var movieId: Int?
     internal static var resubaleIdentifier: String {
         return "\(self)"
     }
@@ -31,10 +32,15 @@ internal class MovieTableViewCell: UITableViewCell {
         posterView.clipsToBounds = true
     }
     
-    private func configureDateLabel(with date: Date) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        dateLabel.text = formatter.string(from: date)
+    private func configureDateLabel(with date: Date?) {
+        if let date = date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            dateLabel.text = formatter.string(from: date)
+        } else {
+            dateLabel.text = "Unknown"
+        }
+        
     }
     
     internal func configure(with movie: Movie) {
@@ -43,11 +49,15 @@ internal class MovieTableViewCell: UITableViewCell {
         overviewTextField.text = movie.overview
         overviewTextField.contentInset = UIEdgeInsets.zero
         posterLoadingIndicator.startAnimating()
+        movieId = movie.id
     }
     
-    internal func setMoviePoster(_ image: UIImage) {
-        posterLoadingIndicator.stopAnimating()
-        posterView.image = image
+    internal func setMoviePoster(_ image: UIImage?, of id: Int?) {
+        if movieId == id {
+            posterLoadingIndicator.stopAnimating()
+            posterView.image = image
+        }
+        
     }
     
     override internal func prepareForReuse() {
@@ -61,5 +71,5 @@ internal class MovieTableViewCell: UITableViewCell {
         overviewTextField.text = ""
         dateLabel.text = ""
     }
-
+    
 }
