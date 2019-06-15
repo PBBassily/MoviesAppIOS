@@ -8,12 +8,20 @@
 
 import UIKit
 
-class MovieCreationAndDetailsView: UIView {
+internal protocol MovieCreationViewDelegate: class {
+    func didChangePotser(_ potser: UIImage?)
+    func didChangeDate(_ date: String)
+    func didChangeTitle(_ title: String)
+    func didChangeOverview(_ overview: String)
+}
 
+class MovieCreationAndDetailsView: UIView {
+    
     @IBOutlet private weak var posterView: UIImageView!
     @IBOutlet private weak var titleField: UITextField!
     @IBOutlet private weak var dateField: UITextField!
     @IBOutlet private weak var overviewTextField: UITextView!
+    internal weak var delegate: MovieCreationViewDelegate?
     
     internal override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +44,7 @@ class MovieCreationAndDetailsView: UIView {
     
     private func configureDateField() {
         dateField.placeholder = "DD/MM/YYYY"
+        dateField.keyboardType = .numbersAndPunctuation
         dateField.delegate = self
     }
     
@@ -89,10 +98,19 @@ extension MovieCreationAndDetailsView: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    internal func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == dateField {
+            delegate?.didChangeDate(textField.text ?? "")
+        } else if textField == textField {
+            delegate?.didChangeTitle(textField.text ?? "")
+        }
+    }
 }
 
 extension MovieCreationAndDetailsView: UITextViewDelegate {
     internal func textViewDidEndEditing(_ textView: UITextView) {
+        delegate?.didChangeOverview(textView.text)
         if textView.text.isEmpty {
             initTextViewWithPlaceholder()
         }

@@ -29,6 +29,7 @@
 		385C711F22B516D200469081 /* MovieCreationAndDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */; };
 		385C712322B5183A00469081 /* MovieCreationAndDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */; };
 		385C712522B51F5E00469081 /* MovieCreationAndDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */; };
+		385C712722B52BFB00469081 /* MovieCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C712622B52BFB00469081 /* MovieCreationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationAndDetailsViewController.swift; sourceTree = "<group>"; };
 		385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieCreationAndDetails.storyboard; sourceTree = "<group>"; };
 		385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationAndDetailsView.swift; sourceTree = "<group>"; };
+		385C712622B52BFB00469081 /* MovieCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */,
 				385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */,
 				385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */,
+				385C712622B52BFB00469081 /* MovieCreationViewModel.swift */,
 			);
 			path = MovieCreation;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				384C47FC22B3E7630061B379 /* Movie.swift in Sources */,
 				384C47BF22B3DE160061B379 /* AppDelegate.swift in Sources */,
 				385C712522B51F5E00469081 /* MovieCreationAndDetailsView.swift in Sources */,
+				385C712722B52BFB00469081 /* MovieCreationViewModel.swift in Sources */,
 				384C480522B3FCCD0061B379 /* MoviesListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

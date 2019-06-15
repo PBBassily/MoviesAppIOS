@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 internal struct Movie {
+    private static var USER_CREATED_MOVIE_ID = 0
     internal var id: Int
     internal var title: String
     internal var overview: String
@@ -30,5 +31,13 @@ internal struct Movie {
             formatter.dateFormat = "yyyy-MM-dd"
             self.date = formatter.date(from: dateRaw)
         }
+    }
+    
+    internal init(title: String, overview: String, date: Date?, poster: UIImage?) {
+        self.id = Movie.USER_CREATED_MOVIE_ID
+        self.title = title
+        self.overview = overview
+        self.poster = poster
+        self.date = date
     }
 }
