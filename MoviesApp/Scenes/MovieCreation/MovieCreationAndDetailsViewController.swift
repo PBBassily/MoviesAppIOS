@@ -8,12 +8,23 @@
 
 import UIKit
 
+internal protocol MovieCreationViewControlDelegate: class {
+    func didCreateMovie(_ movie: Movie)
+}
+
 internal class MovieCreationAndDetailsViewController: UIViewController {
     
-    internal var usageType: UsageType = .movieCreation
-    internal var selectedMovie: Movie?
+    private var usageType: UsageType = .movieCreation
+    internal var selectedMovie: Movie? {
+        didSet {
+            if selectedMovie != nil {
+                usageType = .showingMovieDetails
+            }
+        }
+    }
     private var viewModel: MovieCreationViewModel!
     private var imagePicker: UIImagePickerController!
+    internal weak var delegate: MovieCreationViewControlDelegate?
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +76,8 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
     @objc private func save() {
         view.endEditing(true)
         if viewModel.shouldSave {
-            _ = viewModel.getMovie()
+            delegate?.didCreateMovie(viewModel.getMovie())
+            self.navigationController?.popViewController(animated: true)
         } else {
             showAlert(message: viewModel.getFaliureReasonMessage())
         }

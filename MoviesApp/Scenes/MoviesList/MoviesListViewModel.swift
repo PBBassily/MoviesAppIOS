@@ -90,6 +90,10 @@ internal class MoviesListViewModel {
             completionHandler(image, moviesList[indexPath.row].id)
         }
     }
+    
+    internal func addUserPersonalMovie(_ movie: Movie) {
+        self.moviesDictionary[.myMovies]?.append(movie)
+    }
 }
 
 extension MoviesListViewModel {

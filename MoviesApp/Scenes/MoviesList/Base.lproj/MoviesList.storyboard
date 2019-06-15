@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" id="W5x-Be-l4U">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qei-bF-bhP">
                             <connections>
-                                <segue destination="0r5-aC-FCr" kind="show" id="LyY-OC-L7f"/>
+                                <segue destination="0r5-aC-FCr" kind="show" identifier="MovieCreation" id="LyY-OC-L7f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

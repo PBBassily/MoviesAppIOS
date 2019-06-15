@@ -55,9 +55,15 @@ internal class MoviesListViewController: UIViewController {
     
     private func navigateToMovieDetails(with movie: Movie) {
         if let viewController = AppStoryboard.MovieCreationAndDetails.initialViewController() as? MovieCreationAndDetailsViewController {
-            viewController.usageType = .showingMovieDetails
             viewController.selectedMovie = movie
             self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let viewController = segue.destination as? MovieCreationAndDetailsViewController {
+            viewController.delegate = self
         }
     }
 }
@@ -129,5 +135,14 @@ extension MoviesListViewController: UITableViewDelegate {
             navigateToMovieDetails(with: movie)
         }
     }
+}
+
+extension MoviesListViewController: MovieCreationViewControlDelegate {
+    internal func didCreateMovie(_ movie: Movie) {
+        viewModel.addUserPersonalMovie(movie)
+        moviesTableView.reloadData()
+    }
+    
+    
 }
 
