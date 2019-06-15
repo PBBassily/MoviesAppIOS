@@ -9,7 +9,7 @@
 import UIKit
 
 internal protocol MovieCreationViewDelegate: class {
-    func didChangePotser(_ potser: UIImage?)
+    func didTapOnPosterView()
     func didChangeDate(_ date: String)
     func didChangeTitle(_ title: String)
     func didChangeOverview(_ overview: String)
@@ -89,8 +89,8 @@ class MovieCreationAndDetailsView: UIView {
     }
     
     @objc private func didTapOnPosterView() {
-        
-    }
+        delegate?.didTapOnPosterView()
+     }
 }
 
 extension MovieCreationAndDetailsView: UITextFieldDelegate {
@@ -122,3 +122,4 @@ extension MovieCreationAndDetailsView: UITextViewDelegate {
         return true
     }
 }
+

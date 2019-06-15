@@ -12,11 +12,13 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
     
     internal var usageType: UsageType = .movieCreation
     private var viewModel: MovieCreationViewModel!
+     private var imagePicker: UIImagePickerController!
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         initViewModel()
+        configureImagePicker()
     }
     
     override internal func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,14 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
     private func initViewModel() {
         viewModel = MovieCreationViewModel()
     }
+    
+    private func configureImagePicker() {
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+    }
+    
     
     private func showAlert(message: String) {
         let alertVC = UIAlertController(title: "", message: message, preferredStyle: .alert)
@@ -64,8 +74,8 @@ extension MovieCreationAndDetailsViewController {
 
 extension MovieCreationAndDetailsViewController: MovieCreationViewDelegate {
     
-    internal func didChangePotser(_ poster: UIImage?) {
-        viewModel.poster = poster
+    internal func didTapOnPosterView() {
+        present(imagePicker, animated: true)
     }
     
     internal func didChangeDate(_ date: String) {
@@ -78,5 +88,18 @@ extension MovieCreationAndDetailsViewController: MovieCreationViewDelegate {
     
     internal func didChangeOverview(_ overview: String) {
         viewModel.overview = overview
+    }
+}
+
+extension MovieCreationAndDetailsViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            viewModel.poster = pickedImage
+            if let view = view as? MovieCreationAndDetailsView, usageType == .movieCreation {
+                view.setMoviePoster(pickedImage)
+            }
+        }
+        
+        imagePicker.dismiss(animated: true)
     }
 }
