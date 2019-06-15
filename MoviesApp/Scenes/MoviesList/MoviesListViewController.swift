@@ -15,6 +15,7 @@ internal class MoviesListViewController: UIViewController {
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
+        title = "Movies List"
         initViewModel()
         configureTableView()
         handleUpadateMoviesAction()
@@ -51,6 +52,20 @@ internal class MoviesListViewController: UIViewController {
         moviesTableView.register(moviesCellNib, forCellReuseIdentifier: MovieTableViewCell.resubaleIdentifier)
         let footerNib = UINib(nibName: AppNibFiles.LoadingFooterView.rawValue, bundle: nil)
         moviesTableView.register(footerNib, forHeaderFooterViewReuseIdentifier: LoadingFooterView.resubaleIdentifier)
+    }
+    
+    private func navigateToMovieDetails(with movie: Movie) {
+        if let viewController = AppStoryboard.MovieCreationAndDetails.initialViewController() as? MovieCreationAndDetailsViewController {
+            viewController.selectedMovie = movie
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let viewController = segue.destination as? MovieCreationAndDetailsViewController {
+            viewController.delegate = self
+        }
     }
 }
 
@@ -114,5 +129,21 @@ extension MoviesListViewController: UITableViewDelegate {
         }
         return nil
     }
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let movie = viewModel.getMovie(at: indexPath) {
+            navigateToMovieDetails(with: movie)
+        }
+    }
+}
+
+extension MoviesListViewController: MovieCreationViewControlDelegate {
+    internal func didCreateMovie(_ movie: Movie) {
+        viewModel.addUserPersonalMovie(movie)
+        moviesTableView.reloadData()
+    }
+    
+    
 }
 

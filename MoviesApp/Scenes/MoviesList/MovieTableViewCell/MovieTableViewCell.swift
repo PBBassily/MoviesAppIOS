@@ -10,10 +10,10 @@ import UIKit
 
 internal class MovieTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var overviewLabel: UILabel!
     @IBOutlet private weak var posterView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var overviewTextField: UITextView!
     @IBOutlet private weak var posterLoadingIndicator: UIActivityIndicatorView!
     private var movieId: Int?
     internal static var resubaleIdentifier: String {
@@ -23,7 +23,6 @@ internal class MovieTableViewCell: UITableViewCell {
     override internal func awakeFromNib() {
         super.awakeFromNib()
         configurePosterView()
-        overviewTextField.isEditable = false
     }
     
     private func configurePosterView() {
@@ -46,8 +45,7 @@ internal class MovieTableViewCell: UITableViewCell {
     internal func configure(with movie: Movie) {
         configureDateLabel(with: movie.date)
         titleLabel.text = movie.title
-        overviewTextField.text = movie.overview
-        overviewTextField.contentInset = UIEdgeInsets.zero
+        overviewLabel.text = movie.overview
         posterLoadingIndicator.startAnimating()
         movieId = movie.id
     }
@@ -68,7 +66,7 @@ internal class MovieTableViewCell: UITableViewCell {
         posterView.image = nil
         posterLoadingIndicator.stopAnimating()
         titleLabel.text = ""
-        overviewTextField.text = ""
+        overviewLabel.text = ""
         dateLabel.text = ""
     }
     

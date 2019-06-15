@@ -26,6 +26,10 @@
 		384C480C22B4096E0061B379 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C480B22B4096E0061B379 /* APIClient.swift */; };
 		385C711A22B5004900469081 /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385C711922B5004900469081 /* LoadingFooterView.xib */; };
 		385C711C22B5012B00469081 /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C711B22B5012B00469081 /* LoadingFooterView.swift */; };
+		385C711F22B516D200469081 /* MovieCreationAndDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */; };
+		385C712322B5183A00469081 /* MovieCreationAndDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */; };
+		385C712522B51F5E00469081 /* MovieCreationAndDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */; };
+		385C712722B52BFB00469081 /* MovieCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C712622B52BFB00469081 /* MovieCreationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		384C480B22B4096E0061B379 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		385C711922B5004900469081 /* LoadingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingFooterView.xib; sourceTree = "<group>"; };
 		385C711B22B5012B00469081 /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
+		385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationAndDetailsViewController.swift; sourceTree = "<group>"; };
+		385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieCreationAndDetails.storyboard; sourceTree = "<group>"; };
+		385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationAndDetailsView.swift; sourceTree = "<group>"; };
+		385C712622B52BFB00469081 /* MovieCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,7 @@
 		384C47ED22B3DF3D0061B379 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				385C711D22B5153700469081 /* MovieCreation */,
 				384C47EE22B3DF5C0061B379 /* MoviesList */,
 			);
 			path = Scenes;
@@ -219,6 +228,17 @@
 				385C711B22B5012B00469081 /* LoadingFooterView.swift */,
 			);
 			path = LoadingFooterView;
+			sourceTree = "<group>";
+		};
+		385C711D22B5153700469081 /* MovieCreation */ = {
+			isa = PBXGroup;
+			children = (
+				385C712222B5183A00469081 /* MovieCreationAndDetails.storyboard */,
+				385C711E22B516D200469081 /* MovieCreationAndDetailsViewController.swift */,
+				385C712422B51F5E00469081 /* MovieCreationAndDetailsView.swift */,
+				385C712622B52BFB00469081 /* MovieCreationViewModel.swift */,
+			);
+			path = MovieCreation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385C712322B5183A00469081 /* MovieCreationAndDetails.storyboard in Resources */,
 				384C47C622B3DE180061B379 /* Assets.xcassets in Resources */,
 				384C47C422B3DE160061B379 /* MoviesList.storyboard in Resources */,
 				384C480122B3E8980061B379 /* MovieTableViewCell.xib in Resources */,
@@ -357,6 +378,7 @@
 			files = (
 				384C47FF22B3E87E0061B379 /* MovieTableViewCell.swift in Sources */,
 				384C480722B4032F0061B379 /* AppNibFiles.swift in Sources */,
+				385C711F22B516D200469081 /* MovieCreationAndDetailsViewController.swift in Sources */,
 				384C480922B407410061B379 /* UIConstants.swift in Sources */,
 				384C480C22B4096E0061B379 /* APIClient.swift in Sources */,
 				385C711C22B5012B00469081 /* LoadingFooterView.swift in Sources */,
@@ -365,6 +387,8 @@
 				384C480322B3F39D0061B379 /* MoviesListViewModel.swift in Sources */,
 				384C47FC22B3E7630061B379 /* Movie.swift in Sources */,
 				384C47BF22B3DE160061B379 /* AppDelegate.swift in Sources */,
+				385C712522B51F5E00469081 /* MovieCreationAndDetailsView.swift in Sources */,
+				385C712722B52BFB00469081 /* MovieCreationViewModel.swift in Sources */,
 				384C480522B3FCCD0061B379 /* MoviesListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

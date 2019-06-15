@@ -34,40 +34,39 @@
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Lb-e6-9cU">
-                    <rect key="frame" x="199.5" y="80" width="356.5" height="186"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-Ut-mnT">
                     <rect key="frame" x="89.5" y="128" width="20" height="20"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K94-me-mRt">
+                    <rect key="frame" x="199.5" y="80" width="356.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <accessibility key="accessibilityConfiguration" identifier="MovieTableViewCell"/>
             <constraints>
                 <constraint firstItem="aWk-Ut-mnT" firstAttribute="centerX" secondItem="gNs-KQ-kuF" secondAttribute="centerX" id="2On-1y-g1Z"/>
                 <constraint firstItem="aWk-Ut-mnT" firstAttribute="centerY" secondItem="gNs-KQ-kuF" secondAttribute="centerY" id="3cK-XO-E4c"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0Lb-e6-9cU" secondAttribute="bottom" constant="10" id="3gy-Zy-tHQ"/>
                 <constraint firstItem="NK5-Mj-SCv" firstAttribute="top" secondItem="gNs-KQ-kuF" secondAttribute="top" id="7zP-X7-EaQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gNs-KQ-kuF" secondAttribute="bottom" constant="20" id="F0n-SN-xDl"/>
                 <constraint firstItem="gNs-KQ-kuF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Geb-6N-qaa"/>
                 <constraint firstItem="gNs-KQ-kuF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="MWC-uN-erd"/>
-                <constraint firstItem="0Lb-e6-9cU" firstAttribute="top" secondItem="uQJ-B1-CFM" secondAttribute="bottom" constant="10" id="TUL-Li-TOC"/>
-                <constraint firstItem="0Lb-e6-9cU" firstAttribute="leading" secondItem="NK5-Mj-SCv" secondAttribute="leading" id="VT0-TR-nRz"/>
+                <constraint firstItem="K94-me-mRt" firstAttribute="top" secondItem="uQJ-B1-CFM" secondAttribute="bottom" constant="10" id="Spk-uC-uzB"/>
+                <constraint firstItem="K94-me-mRt" firstAttribute="leading" secondItem="NK5-Mj-SCv" secondAttribute="leading" id="YZr-3e-TPv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NK5-Mj-SCv" secondAttribute="trailing" constant="5" id="Zpw-Bd-RKK"/>
                 <constraint firstItem="uQJ-B1-CFM" firstAttribute="top" secondItem="NK5-Mj-SCv" secondAttribute="bottom" constant="8" symbolic="YES" id="aiQ-4O-Meh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="K94-me-mRt" secondAttribute="bottom" constant="10" id="kxK-QU-Qun"/>
                 <constraint firstItem="NK5-Mj-SCv" firstAttribute="leading" secondItem="gNs-KQ-kuF" secondAttribute="trailing" constant="20" id="lo4-Xl-eNe"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Lb-e6-9cU" secondAttribute="trailing" constant="10" id="uW1-GT-vVB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="K94-me-mRt" secondAttribute="trailing" constant="10" id="ujH-cy-xER"/>
                 <constraint firstItem="uQJ-B1-CFM" firstAttribute="leading" secondItem="NK5-Mj-SCv" secondAttribute="leading" id="yzi-e2-F6y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="dateLabel" destination="uQJ-B1-CFM" id="ZfX-Nx-XGk"/>
-                <outlet property="overviewTextField" destination="0Lb-e6-9cU" id="Z9r-hP-gdf"/>
+                <outlet property="overviewLabel" destination="K94-me-mRt" id="M60-h7-pi0"/>
                 <outlet property="posterLoadingIndicator" destination="aWk-Ut-mnT" id="NKy-s6-ecu"/>
                 <outlet property="posterView" destination="gNs-KQ-kuF" id="K60-g5-qOt"/>
                 <outlet property="titleLabel" destination="NK5-Mj-SCv" id="thK-BU-Hda"/>

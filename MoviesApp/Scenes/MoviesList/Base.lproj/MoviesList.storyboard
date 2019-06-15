@@ -32,7 +32,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="W5x-Be-l4U"/>
+                    <navigationItem key="navigationItem" id="W5x-Be-l4U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qei-bF-bhP">
+                            <connections>
+                                <segue destination="0r5-aC-FCr" kind="show" identifier="MovieCreation" id="LyY-OC-L7f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="moviesTableView" destination="OdN-uu-1S3" id="KT9-yV-asY"/>
                     </connections>
@@ -58,6 +64,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JmX-WC-f1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="-672.41379310344837"/>
+        </scene>
+        <!--MovieCreationAndDetails-->
+        <scene sceneID="KAT-fx-P2u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieCreationAndDetails" id="0r5-aC-FCr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2e8-es-7Bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="130"/>
         </scene>
     </scenes>
 </document>
