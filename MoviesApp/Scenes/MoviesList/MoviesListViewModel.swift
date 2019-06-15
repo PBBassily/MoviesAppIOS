@@ -11,6 +11,7 @@ import UIKit
 
 internal class MoviesListViewModel {
     
+    private var MAXIMUMU_NUMBER_OF_IMAGES_TO_BE_CACHED = 100
     private var moviesDictionary: [SectionType: [Movie]]
     private var model: MoviesListModel
     private var currentPage: Int
@@ -85,8 +86,15 @@ internal class MoviesListViewModel {
                 completionHandler(nil, nil)
                 return
         }
-        model.downloadImage(for: moviesList[indexPath.row], width: width) { [weak self]image in
-            self?.moviesDictionary[sectionType]?[indexPath.row].poster = image
+        model.downloadImage(for: moviesList[indexPath.row], width: width) { [weak self] image in
+            guard let self = self else {
+                return
+            }
+            self.moviesDictionary[sectionType]?[indexPath.row].poster = image // caching images
+            let previouslyCachedPosterIndex  = indexPath.row - self.MAXIMUMU_NUMBER_OF_IMAGES_TO_BE_CACHED
+            if  previouslyCachedPosterIndex >= 0 {
+                self.moviesDictionary[sectionType]?[previouslyCachedPosterIndex].poster = nil // maintin the maximum number of cached images
+            }
             completionHandler(image, moviesList[indexPath.row].id)
         }
     }

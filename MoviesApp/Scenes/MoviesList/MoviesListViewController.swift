@@ -97,7 +97,12 @@ extension MoviesListViewController: UITableViewDataSource {
             } else {
                 viewModel.downloadPosterForMovie(at: indexPath, width: 200) { (image, movieId) in
                     DispatchQueue.main.async {
-                        cell.setMoviePoster(image, of: movieId)
+                        if let image = image {
+                            cell.setMoviePoster(image, of: movieId)
+                        } else {
+                            cell.setMoviePoster(UIImage(named: "poster_placeholder"), of: movieId)
+                        }
+                        
                     }
                 }
             }
