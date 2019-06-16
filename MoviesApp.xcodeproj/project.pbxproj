@@ -148,8 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				384C47D322B3DE180061B379 /* MoviesListTesting.swift */,
-				384C47D522B3DE180061B379 /* Info.plist */,
 				384EBCFC22B6315C00BD1209 /* MovieCreationTesting.swift */,
+				384C47D522B3DE180061B379 /* Info.plist */,
 			);
 			path = MoviesAppTests;
 			sourceTree = "<group>";

@@ -87,4 +87,13 @@ class MoviesListTesting: XCTestCase {
         
     }
     
+    func testPersonalMovieCreation() {
+        let movie = Movie(id: 420817, title: "Aladin", overview: "alajdhjhd", dateRaw: "2019-05-22", posterUrl:  "/3iYQTLGoy7QnjcUYRJy4YrAgGvp.jpg")
+        for _ in 0..<10 {
+            viewModel.addUserPersonalMovie(movie)
+        }
+        XCTAssertEqual(viewModel.getNumberOfMovies(at: .myMovies), 10, "the user created 10 movies and the data source is not aware")
+        XCTAssertEqual(viewModel.getNumberOfMovies(at: .allMovies), 0, "the user created 10 movies and the data source should not edit the all movies section")
+    }
+    
 }
