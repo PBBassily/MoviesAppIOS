@@ -12,7 +12,7 @@ import UIKit
 internal class MoviesListViewModel {
     
     private var MAXIMUMU_NUMBER_OF_IMAGES_TO_BE_CACHED = 100
-    internal var moviesDictionary: [SectionType: [Movie]] // made internal for the purpose of testing
+    private var moviesDictionary: [SectionType: [Movie]]
     private var model: MoviesListModel
     private var currentPage: Int
     private var hasPersonalMovies: Bool {

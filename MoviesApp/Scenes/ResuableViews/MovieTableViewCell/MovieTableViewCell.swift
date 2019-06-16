@@ -23,6 +23,7 @@ internal class MovieTableViewCell: UITableViewCell {
     override internal func awakeFromNib() {
         super.awakeFromNib()
         configurePosterView()
+        self.isAccessibilityElement = true // for testing
     }
     
     private func configurePosterView() {

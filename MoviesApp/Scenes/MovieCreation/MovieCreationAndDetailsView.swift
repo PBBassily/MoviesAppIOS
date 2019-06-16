@@ -36,6 +36,7 @@ class MovieCreationAndDetailsView: UIView {
     private func configureOverviewField() {
         overviewTextField.delegate = self
         initTextViewWithPlaceholder()
+        overviewTextField.accessibilityIdentifier = "MovieOverviewTextView"
     }
     
     private func initTextViewWithPlaceholder() {
@@ -47,6 +48,7 @@ class MovieCreationAndDetailsView: UIView {
         dateField.placeholder = "DD/MM/YYYY"
         dateField.keyboardType = .numbersAndPunctuation
         dateField.delegate = self
+        dateField.accessibilityIdentifier = "MovieDateField"
     }
     
     private func configureTitleField() {
@@ -54,6 +56,7 @@ class MovieCreationAndDetailsView: UIView {
         titleField.autocapitalizationType = .sentences
         titleField.delegate = self
         titleLabel.isHidden = true
+        titleField.accessibilityIdentifier = "MovieTitleField"
     }
     
     private func configurePosterView() {
@@ -62,6 +65,7 @@ class MovieCreationAndDetailsView: UIView {
         posterView.contentMode = .scaleAspectFill
         posterView.clipsToBounds = true
         posterView.image = UIImage(named: "poster_placeholder")
+        posterView.accessibilityIdentifier = "MoviePosterImageView"
     }
     
     private func configureView() {
@@ -107,7 +111,7 @@ class MovieCreationAndDetailsView: UIView {
     
     @objc private func didTapOnPosterView() {
         delegate?.didTapOnPosterView()
-     }
+    }
 }
 
 extension MovieCreationAndDetailsView: UITextFieldDelegate {

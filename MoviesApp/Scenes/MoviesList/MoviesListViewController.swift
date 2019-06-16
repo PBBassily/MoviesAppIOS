@@ -34,6 +34,7 @@ internal class MoviesListViewController: UIViewController {
     private func configureTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
+        moviesTableView.accessibilityIdentifier = "MoviesListTableView" // for testing
     }
     
     private func handleUpadateMoviesAction() {

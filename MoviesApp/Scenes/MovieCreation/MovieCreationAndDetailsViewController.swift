@@ -37,6 +37,7 @@ internal class MovieCreationAndDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         if usageType == .movieCreation {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+            navigationItem.rightBarButtonItem?.accessibilityIdentifier = "MovieSaveButton"
         } else if usageType == .showingMovieDetails, let movie = selectedMovie {
             configureView(with: movie)
         }
