@@ -12,6 +12,7 @@ import XCTest
 class MovieCreationTesting: XCTestCase {
     
     var viewModel: MovieCreationViewModel!
+    
     override func setUp() {
         viewModel = MovieCreationViewModel()
     }
