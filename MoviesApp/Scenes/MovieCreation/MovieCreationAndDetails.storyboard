@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" secondItem="iG3-eM-XfF" secondAttribute="height" multiplier="27:40" id="xaQ-UG-IOl"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfb-Hg-nfb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="nfb-Hg-nfb">
                                 <rect key="frame" x="182" y="277" width="11" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>

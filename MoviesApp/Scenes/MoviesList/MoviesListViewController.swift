@@ -20,10 +20,6 @@ internal class MoviesListViewController: UIViewController {
         configureTableView()
         handleUpadateMoviesAction()
         registerNibFilesToTableView()
-    }
-    
-    override internal func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         viewModel.requestMovies()
     }
     
