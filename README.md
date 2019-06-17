@@ -1,5 +1,5 @@
 # MoviesAppIOS
-iOS application displays a list of movies from https://www.themoviedb.org/, made in less than 14 hours
+iOS application displays a list of movies from https://www.themoviedb.org/, made in less than 15 hours
 
 ## App Features
 1) User can know the overview of the movies by scrolling 
